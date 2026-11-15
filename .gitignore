@@ -1,0 +1,32 @@
+# 1. Python Virtual Environments (Notice "(venv)" in your terminal!)
+venv/
+.venv/
+env/
+
+# 2. Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# 3. Secrets & Local Environment Variables (CRITICAL for DevOps)
+.env
+.env.*
+*.pem
+*.key
+kubeconfig
+
+# 4. IDE & OS Junk Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Virtual environment created directly in project root
+bin/
+lib/
+lib64
+include/
+pyvenv.cfg
+EOF
+
