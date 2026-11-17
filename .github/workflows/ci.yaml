@@ -37,3 +37,15 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha, mode=max
  
+
+  deploy:
+    needs: create-and-push
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: self-hosted
+    steps: 
+      - name: Deploy new image to k3s and verify rollout
+        run: |
+          kubectl set image deployment/app-url url-shortener=${{ secrets.DOCKERHUB_USERNAME }}/airoli:${{ github.sha }} -n url-shortener
+          kubectl rollout status deployment/app-url -n url-shortener --timeout=120s
+
+
